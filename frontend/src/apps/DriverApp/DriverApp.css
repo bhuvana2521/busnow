@@ -1,0 +1,408 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.driver-app {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: #FAFAF8;
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Header */
+.d-header {
+  background: #0D0D0D;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.d-logo {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -.5px;
+}
+
+.d-logo span:first-child { color: #FF5A00; }
+
+.d-role {
+  font-size: .75rem;
+  font-weight: 700;
+  background: rgba(255,255,255,.1);
+  color: rgba(255,255,255,.6) !important;
+  border-radius: 6px;
+  padding: 3px 8px;
+  margin-left: 8px;
+}
+
+.d-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .5px;
+}
+
+.d-status-badge.live {
+  background: #E8F9EF;
+  color: #1DB954;
+}
+
+.d-status-badge.offline {
+  background: rgba(255,255,255,.1);
+  color: rgba(255,255,255,.5);
+}
+
+.d-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: blink 1.2s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .2; }
+}
+
+/* Bus Info */
+.d-bus-info {
+  display: flex;
+  gap: 10px;
+  padding: 16px;
+  background: #fff;
+  border-bottom: 1.5px solid #EFEFEF;
+}
+
+.d-info-card {
+  flex: 1;
+  background: #F4F4F2;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+}
+
+.d-info-label {
+  font-size: .68rem;
+  font-weight: 700;
+  color: #8A8A8A;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  margin-bottom: 4px;
+}
+
+.d-info-value {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #0D0D0D;
+}
+
+/* GPS */
+.d-gps-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 14px 16px;
+  background: #fff;
+  border: 1.5px solid #EFEFEF;
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+
+.d-gps-icon { font-size: 1.5rem; }
+
+.d-gps-info { flex: 1; }
+
+.d-gps-title {
+  font-size: .82rem;
+  font-weight: 800;
+  color: #0D0D0D;
+  margin-bottom: 3px;
+}
+
+.d-gps-coords {
+  font-size: .75rem;
+  color: #1DB954;
+  font-weight: 600;
+}
+
+.d-gps-loading {
+  font-size: .75rem;
+  color: #8A8A8A;
+  font-weight: 500;
+}
+
+.d-gps-error {
+  font-size: .75rem;
+  color: #FF3B30;
+  font-weight: 500;
+}
+
+.d-gps-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #EFEFEF;
+}
+
+.d-gps-dot.active {
+  background: #1DB954;
+  box-shadow: 0 0 0 3px rgba(29,185,84,.2);
+  animation: blink 1.2s infinite;
+}
+
+/* Crowd */
+.d-section-label {
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #8A8A8A;
+  padding: 0 16px;
+  margin-bottom: 10px;
+}
+
+.d-crowd-btns {
+  display: flex;
+  gap: 10px;
+  padding: 0 16px;
+  margin-bottom: 24px;
+}
+
+.d-crowd-btn {
+  flex: 1;
+  border: 2px solid #EFEFEF;
+  border-radius: 16px;
+  padding: 18px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all .2s;
+  background: #fff;
+}
+
+.d-crowd-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,.08);
+}
+
+.d-crowd-btn.active {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,.1);
+}
+
+.d-crowd-emoji { font-size: 1.8rem; }
+
+.d-crowd-label {
+  font-size: .78rem;
+  font-weight: 800;
+}
+
+/* Go Live Button */
+.d-action {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.d-go-live {
+  width: 100%;
+  background: #FF5A00;
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  padding: 18px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all .25s;
+  letter-spacing: -.3px;
+}
+
+.d-go-live:hover {
+  background: #FF7A30;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(255,90,0,.35);
+}
+
+.d-go-live:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.d-go-offline {
+  width: 100%;
+  background: #0D0D0D;
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  padding: 18px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all .25s;
+}
+
+.d-go-offline:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+.d-gps-warn {
+  font-size: .8rem;
+  color: #FFB800;
+  font-weight: 600;
+}
+
+/* Live Bar */
+.d-live-bar {
+  margin: 16px;
+  background: #E8F9EF;
+  border: 1.5px solid #1DB954;
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: .82rem;
+  font-weight: 700;
+  color: #1DB954;
+}
+
+.d-live-pulse {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #1DB954;
+  animation: blink 1s infinite;
+  flex-shrink: 0;
+}
+
+/* Back button */
+.d-back {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+.d-back:hover { background: rgba(255, 255, 255, 0.2); }
+
+/* Connection warning */
+.d-conn-warn {
+  background: #FFF8E6;
+  border-bottom: 1.5px solid #FFB800;
+  color: #B8860B;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  text-align: center;
+}
+
+/* Driver banner */
+.d-driver-banner {
+  margin: 0 16px 14px;
+  background: #F4F4F2;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 0.83rem;
+  color: #444;
+  font-weight: 500;
+}
+.d-driver-banner strong { color: #0D0D0D; }
+
+/* GPS accuracy */
+.d-gps-acc { color: #8A8A8A; }
+
+/* Login Screen */
+.d-login {
+  flex: 1;
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.d-login-icon {
+  font-size: 3.5rem;
+  margin-bottom: 12px;
+}
+
+.d-login-title {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #0D0D0D;
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+}
+
+.d-login-sub {
+  font-size: 0.85rem;
+  color: #8A8A8A;
+  font-weight: 500;
+  margin-bottom: 28px;
+}
+
+.d-login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.d-field { display: flex; flex-direction: column; gap: 6px; }
+
+.d-field-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #8A8A8A;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.d-input {
+  background: #F4F4F2;
+  border: 1.5px solid #EFEFEF;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #0D0D0D;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.d-input:focus { border-color: #FF5A00; background: #fff; }
+
+.d-select { cursor: pointer; }
+
+.d-login-error {
+  background: #FFF0EE;
+  border: 1.5px solid #FFD4CF;
+  color: #FF3B30;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}

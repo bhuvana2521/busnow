@@ -6,9 +6,11 @@ const cors = require("cors");
 const dns = require("dns");
 require("dotenv").config();
 
-// Force Node.js to use Google DNS — fixes SRV lookup issues on Windows
-dns.setDefaultResultOrder("ipv4first");
-dns.setServers(["8.8.8.8", "8.8.4.4"]);
+// Fix SRV DNS resolution on Windows (no effect on Linux/Render)
+try {
+  dns.setDefaultResultOrder("ipv4first");
+  dns.setServers(["8.8.8.8", "8.8.4.4"]);
+} catch(e) {}
 
 const Bus = require("./models/Bus");
 
@@ -25,10 +27,21 @@ const io = new Server(server, {
 app.use(cors());
 app.use(express.json());
 
-// Connect MongoDB
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB Connected"))
-  .catch(err => console.log("❌ MongoDB Error:", err));
+// Connect MongoDB with retry
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {
+      serverSelectionTimeoutMS: 10000,
+      socketTimeoutMS: 45000,
+    });
+    console.log("✅ MongoDB Connected");
+  } catch (err) {
+    console.log("❌ MongoDB Error:", err.message);
+    console.log("🔄 Retrying in 5 seconds...");
+    setTimeout(connectDB, 5000);
+  }
+};
+connectDB();
 
 // Routes
 app.use("/api/buses", require("./routes/buses"));
